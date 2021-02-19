@@ -6,6 +6,9 @@ import TemplateDisplay from "./templateDisplay";
 import GrapesJS from 'grapesjs';
 // import gjsPresetWebpage from 'grapesjs-preset-webpage';
 import gjsBasicBlocks from 'grapesjs-blocks-basic';
+import sanityClient from "./client"
+
+
 
 const App: React.FC = () => {
 
@@ -13,6 +16,7 @@ const App: React.FC = () => {
     const [cssString, setCssString] = useState("");
     const [pluginLoaded, setPluginLoaded] = useState(false);
     const [editor, setEditor] = useState(null);
+
 
     useEffect(() => {
         if (!pluginLoaded) {
@@ -25,9 +29,21 @@ const App: React.FC = () => {
             const e = GrapesJS.init({
                 container: `#example-editor`,
                 fromElement: true,
-                plugins: [gjsBasicBlocks, timerPluginRef]
+                plugins: [gjsBasicBlocks, timerPluginRef],
+              
+                storageManager: {
+                    // type: 'remote',
+                    // stepsBeforeSave: 3,
+                    // urlStore: 'http://127.0.0.1:5500',
+                    // urlLoad: 'http://127.0.0.1:5500/index.html',
+                    // For custom parameters/headers on requests
+                    autoload: false,
+                  
+                  }
             });
             setEditor(e);
+            e.load(res => console.log(res,'Load callback'));
+            
         }
     });
 
