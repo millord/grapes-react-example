@@ -6,15 +6,15 @@ export default {
   fields: [
     // ... other fields ...
     {
-      name: "styles",
+      name: "css",
       title: "css style",
       type: "string",
     },
     {
-      name: "content",
+      name: "html",
       title: "html content",
       type: "string",
-    },
+    }, 
    
   ],
 };

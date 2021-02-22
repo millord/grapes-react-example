@@ -16,6 +16,11 @@ window.nodeHtmlParser = nodeHtmlParser;
  * @param config usual grapesjs config
  * @returns parser function
  */
+
+
+
+
+
 export default config => {
     var TEXT_NODE = 'span';
     var c = config;
@@ -420,6 +425,7 @@ export default config => {
 
             var config = (c.em && c.em.get('Config')) || {};
             var res = { html: '', css: '' };
+            
 
             var quoted = this.quoteJsxExpresionsInAttributes(str);
             let wrappedInDiv = false;

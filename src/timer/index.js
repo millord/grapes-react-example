@@ -19,7 +19,7 @@ import {
 
 export default function addTimerPlugin(setHtmlString, setCssString) {
     console.log(addTimerPlugin, [timerPluginRef, setHtmlString, setCssString]);
-    debugger;
+    // debugger;
     grapesjs.plugins.add(timerPluginRef, (editor, opts = {}) => {
         let c = opts;
 

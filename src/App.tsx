@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useReducer} from 'react';
 import 'grapesjs/dist/css/grapes.min.css';
 import {timerPluginRef} from "./timer/consts";
 import addTimerPlugin from './timer';
@@ -6,17 +6,30 @@ import TemplateDisplay from "./templateDisplay";
 import GrapesJS from 'grapesjs';
 // import gjsPresetWebpage from 'grapesjs-preset-webpage';
 import gjsBasicBlocks from 'grapesjs-blocks-basic';
-import sanityClient from "./client"
+import { RSA_NO_PADDING } from 'constants';
+// import sanityClient  from "./client"
+
+
+const sanityClient = require("@sanity/client")
+const client = sanityClient({
+    projectId: "q7chfx37",
+    dataset: "production",
+    token:
+      "sk33g0tUW1jEV9CJ5jAnFdoCyH88J2HNbVTMxwsttHIj4tpM6PM8yfCqNgy2bhVLUkgX24fGnsf5NcOsN", // or leave blank to be anonymous user
+    useCdn: true,
+  })
+
 
 
 
 const App: React.FC = () => {
+    
+  
 
     const [htmlString, setHtmlString] = useState(null);
     const [cssString, setCssString] = useState("");
     const [pluginLoaded, setPluginLoaded] = useState(false);
     const [editor, setEditor] = useState(null);
-
 
     useEffect(() => {
         if (!pluginLoaded) {
@@ -24,6 +37,9 @@ const App: React.FC = () => {
             // and the TemplateDisplay gets updated withthe new values
             addTimerPlugin(setHtmlString, setCssString);
             setPluginLoaded(true);
+
+
+          
         }
         else if (!editor) {
             const e = GrapesJS.init({
@@ -31,18 +47,29 @@ const App: React.FC = () => {
                 fromElement: true,
                 plugins: [gjsBasicBlocks, timerPluginRef],
               
-                storageManager: {
-                    // type: 'remote',
-                    // stepsBeforeSave: 3,
-                    // urlStore: 'http://127.0.0.1:5500',
-                    // urlLoad: 'http://127.0.0.1:5500/index.html',
-                    // For custom parameters/headers on requests
-                    autoload: false,
+                // storageManager: {
+                //     type: 'remote',
+                //     stepsBeforeSave: 3,
+                //     urlStore: `http://localhost:3001/templatedata/store/${1}`,
+                //     urlLoad: `http://localhost:3001/templatedata/load/${1}`,
+                //     // For custom parameters/headers on requests
+                //     params: { _some_token: '....' },
+                //     // headers: { Authorization: 'Basic ...' },
+                //     headers: { 'Access-Control-Allow-Origin': true,
+                //     contentType: "application/json"
+                // },
+                //   }
+
                   
-                  }
             });
-            setEditor(e);
-            e.load(res => console.log(res,'Load callback'));
+            
+        //     e.load(res => (
+        //         res._type ="templateData",
+        //         client.create(res).then(res => {
+        //   console.log(`document was created, document ID is ${res._id}`)
+        // })
+        //     ))
+        
             
         }
     });
@@ -51,6 +78,7 @@ const App: React.FC = () => {
         <>
             <div id="example-editor"/>
             <TemplateDisplay jsxString={htmlString} cssString={cssString} />
+            {/* <button  onClick={handleClick}>Send Data</button> */}
         </>
     );
 }
