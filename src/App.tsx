@@ -6,30 +6,81 @@ import TemplateDisplay from "./templateDisplay";
 import GrapesJS from 'grapesjs';
 // import gjsPresetWebpage from 'grapesjs-preset-webpage';
 import gjsBasicBlocks from 'grapesjs-blocks-basic';
-import { RSA_NO_PADDING } from 'constants';
+
 // import sanityClient  from "./client"
+import axios from 'axios'
+import {Button} from "@material-ui/core"
 
 
-const sanityClient = require("@sanity/client")
-const client = sanityClient({
-    projectId: "q7chfx37",
-    dataset: "production",
-    token:
-      "sk33g0tUW1jEV9CJ5jAnFdoCyH88J2HNbVTMxwsttHIj4tpM6PM8yfCqNgy2bhVLUkgX24fGnsf5NcOsN", // or leave blank to be anonymous user
-    useCdn: true,
-  })
+// const sanityClient = require("@sanity/client")
+// const client = sanityClient({
+//     projectId: "q7chfx37",
+//     dataset: "production",
+//     token:
+//       "sk33g0tUW1jEV9CJ5jAnFdoCyH88J2HNbVTMxwsttHIj4tpM6PM8yfCqNgy2bhVLUkgX24fGnsf5NcOsN", // or leave blank to be anonymous user
+//     useCdn: true,
+//   })
 
 
 
 
 const App: React.FC = () => {
     
-  
+    
 
     const [htmlString, setHtmlString] = useState(null);
     const [cssString, setCssString] = useState("");
     const [pluginLoaded, setPluginLoaded] = useState(false);
     const [editor, setEditor] = useState(null);
+
+
+    
+
+    /// TESTING BLOW
+    const [templateData, setTemplateData] = useState({
+       html:'',
+       css: ''
+    })
+
+    const handleDone = () => {
+        setTemplateData({
+            html: localStorage.getItem('gjs-html'),
+            css: localStorage.getItem('gjs-css')
+        })
+    }
+    const handleClick = async() => {
+        console.log('data sent')
+        //  setTemplateData({
+        //     html: localStorage.getItem('gjs-html'),
+        //     css: localStorage.getItem('gjs-css')
+        // })
+   
+        await axios.post(`http://localhost:8000/create/`,{templateData})
+        
+     
+     
+    }
+
+    // const clearClick=  () => {
+
+        // setTemplateData({
+        //     html: '',
+        //     css: ''
+        // })
+       // localStorage.clear()
+
+       
+    // }
+
+    
+   
+    
+
+    console.log("This is the templateData", templateData)
+
+    
+
+   /// TESTING ABOVE
 
     useEffect(() => {
         if (!pluginLoaded) {
@@ -37,7 +88,13 @@ const App: React.FC = () => {
             // and the TemplateDisplay gets updated withthe new values
             addTimerPlugin(setHtmlString, setCssString);
             setPluginLoaded(true);
-
+            // setTemplateData({
+            //     html: localStorage.getItem('gjs-html'),
+            //     css: localStorage.getItem('gjs-css')
+            // })
+            // localStorage.clear()
+          
+      
 
           
         }
@@ -62,7 +119,7 @@ const App: React.FC = () => {
 
                   
             });
-            
+            // e.load(res => console.log("rest here",res));
         //     e.load(res => (
         //         res._type ="templateData",
         //         client.create(res).then(res => {
@@ -73,12 +130,25 @@ const App: React.FC = () => {
             
         }
     });
+   
 
     return (
         <>
             <div id="example-editor"/>
-            <TemplateDisplay jsxString={htmlString} cssString={cssString} />
-            {/* <button  onClick={handleClick}>Send Data</button> */}
+            {/* <TemplateDisplay jsxString={htmlString} cssString={cssString} /> */}
+
+
+            <Button style={{margin:4}} variant="contained" color="primary" onClick={handleDone}>
+            Done
+             </Button>
+            <Button style={{margin:4}} variant="contained" color="primary" onClick={handleClick}>
+            Create Site
+             </Button>
+             <Button  variant="contained" color="primary">
+            <a className="offbutton" href="http://localhost:8000/" target="_blank"
+            >Visit Site</a>
+             </Button>
+
         </>
     );
 }

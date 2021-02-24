@@ -421,7 +421,7 @@ export default config => {
          *
          */
         parse(str, parserCss) {
-            console.log("html", str, parserCss);
+            //console.log("html", str, parserCss);
 
             var config = (c.em && c.em.get('Config')) || {};
             var res = { html: '', css: '' };
