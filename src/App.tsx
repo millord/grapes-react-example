@@ -10,6 +10,7 @@ import gjsBasicBlocks from 'grapesjs-blocks-basic';
 // import sanityClient  from "./client"
 import axios from 'axios'
 import {Button, Typography} from "@material-ui/core"
+import HorizontalLabelPositionBelowStepper from './stepper';
 
 
 // const sanityClient = require("@sanity/client")
@@ -141,13 +142,13 @@ const App: React.FC = () => {
     return (
         <>
             <div id="example-editor"/>
-            <Typography style={{margin: 5}} className="siteTitle" variant="h4" component="h2">
-           Create Your Site
-           </Typography>
+            {/* <Typography style={{margin: 6}} className="siteTitle" variant="h4" component="h2">
+           Create Your Site!
+           </Typography> */}
             {/* <TemplateDisplay jsxString={htmlString} cssString={cssString} /> */}
 
 
-           {!done && ( <Button style={{margin:4}} variant="contained" color="primary" onClick={handleDone}>
+           {/* {!done && ( <Button style={{margin:4}} variant="contained" color="primary" onClick={handleDone}>
             Done
              </Button>)}
             {done && (<Button style={{margin:4}} variant="contained" color="primary" onClick={handleClick}>
@@ -157,7 +158,8 @@ const App: React.FC = () => {
              variant="contained" color="primary">
             <a className="offbutton" href="http://localhost:8000/" target="_blank"
             >Visit Site</a>
-             </Button>)}
+             </Button>)} */}
+            <HorizontalLabelPositionBelowStepper/>
 
         </>
     );
