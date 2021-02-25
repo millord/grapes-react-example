@@ -41,12 +41,14 @@ const App: React.FC = () => {
        html:'',
        css: ''
     })
+    const [done, setDone] = useState(false)
 
     const handleDone = () => {
         setTemplateData({
             html: localStorage.getItem('gjs-html'),
             css: localStorage.getItem('gjs-css')
         })
+        setDone(true)
     }
     const handleClick = async() => {
         console.log('data sent')
@@ -138,12 +140,12 @@ const App: React.FC = () => {
             {/* <TemplateDisplay jsxString={htmlString} cssString={cssString} /> */}
 
 
-            <Button style={{margin:4}} variant="contained" color="primary" onClick={handleDone}>
+           {!done && ( <Button style={{margin:4}} variant="contained" color="primary" onClick={handleDone}>
             Done
-             </Button>
-            <Button style={{margin:4}} variant="contained" color="primary" onClick={handleClick}>
+             </Button>)}
+            {done && (<Button style={{margin:4}} variant="contained" color="primary" onClick={handleClick}>
             Create Site
-             </Button>
+             </Button>)}
              <Button  variant="contained" color="primary">
             <a className="offbutton" href="http://localhost:8000/" target="_blank"
             >Visit Site</a>
