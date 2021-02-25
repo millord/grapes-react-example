@@ -23,17 +23,17 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function getSteps() {
-  return ['Done Designing', 'Create your site', 'Visit your site!'];
+  return ['Designing', 'Create your site', 'Visit your site!'];
 }
 
 function getStepContent(stepIndex: number) {
   switch (stepIndex) {
     case 0:
-      return 'Select campaign settings...';
+      return 'Build and amizing site...';
     case 1:
-      return 'What is an ad group anyways?';
+      return "It's time to create your work";
     case 2:
-      return 'This is the bit I really care about!';
+      return 'Go and see it!';
     default:
       return 'Unknown stepIndex';
   }
@@ -76,7 +76,7 @@ export default function HorizontalLabelPositionBelowStepper() {
    
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} >
       <Stepper activeStep={activeStep} alternativeLabel>
         {steps.map((label) => (
           <Step key={label}>
@@ -92,12 +92,15 @@ export default function HorizontalLabelPositionBelowStepper() {
           </div>
         ) : (
           <div>
-            <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
+            <Typography variant="h6"
+            style={{margin:8, marginTop: -40}}
+            className={classes.instructions}>{getStepContent(activeStep)}</Typography>
             <div>
               <Button
                 disabled={activeStep === 0}
                 onClick={handleBack}
                 className={classes.backButton}
+                
               >
                 Back
               </Button>
