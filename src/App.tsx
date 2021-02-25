@@ -42,6 +42,7 @@ const App: React.FC = () => {
        css: ''
     })
     const [done, setDone] = useState(false)
+    const [create,setCreate] = useState(false)
 
     const handleDone = () => {
         setTemplateData({
@@ -52,12 +53,15 @@ const App: React.FC = () => {
     }
     const handleClick = async() => {
         console.log('data sent')
+        setCreate(true)
         //  setTemplateData({
         //     html: localStorage.getItem('gjs-html'),
         //     css: localStorage.getItem('gjs-css')
         // })
    
         await axios.post(`http://localhost:8000/create/`,{templateData})
+
+       
         
      
      
@@ -146,10 +150,11 @@ const App: React.FC = () => {
             {done && (<Button style={{margin:4}} variant="contained" color="primary" onClick={handleClick}>
             Create Site
              </Button>)}
-             <Button  variant="contained" color="primary">
+            {create && ( <Button  
+             variant="contained" color="primary">
             <a className="offbutton" href="http://localhost:8000/" target="_blank"
             >Visit Site</a>
-             </Button>
+             </Button>)}
 
         </>
     );
