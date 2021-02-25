@@ -23,30 +23,10 @@ const LiveTemplate = styled.div`
  */
 
 
-const sanityClient = require("@sanity/client")
-const client = sanityClient({
-    projectId: "q7chfx37",
-    dataset: "production",
-    token:
-      "sk33g0tUW1jEV9CJ5jAnFdoCyH88J2HNbVTMxwsttHIj4tpM6PM8yfCqNgy2bhVLUkgX24fGnsf5NcOsN", // or leave blank to be anonymous user
-    useCdn: true,
-  })
+
 
 
 const TemplateDisplay = ({jsxString, cssString}) => {
-    let result = {
-        _type: "templateData",
-        styles:  cssString,
-        content: jsxString,
-        
-    }
-
-    // console.log("This is the result",result)
-     // CREATE IN SANITY
-        // client.create(result).then(res => {
-        //   console.log(`document was created, document ID is ${res._id}`)
-        // })
-
 
     if (!jsxString) {
         return (
