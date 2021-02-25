@@ -29,7 +29,7 @@ function getSteps() {
 function getStepContent(stepIndex: number) {
   switch (stepIndex) {
     case 0:
-      return 'Build and amizing site...';
+      return 'Build an amizing site...';
     case 1:
       return "It's time to create your work";
     case 2:
