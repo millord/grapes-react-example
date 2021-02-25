@@ -1,9 +1,10 @@
 import React, {useEffect, useState, useReducer} from 'react';
-import 'grapesjs/dist/css/grapes.min.css';
+
 import {timerPluginRef} from "./timer/consts";
 import addTimerPlugin from './timer';
 import TemplateDisplay from "./templateDisplay";
 import GrapesJS from 'grapesjs';
+import './index.css'
 // import gjsPresetWebpage from 'grapesjs-preset-webpage';
 import gjsBasicBlocks from 'grapesjs-blocks-basic';
 

@@ -18,5 +18,15 @@ code {
 }
 
 .gjs-pn-buttons {
-  color: aqua;
+  color: rgb(34, 29, 29);
+}
+
+.gjs-one-bg {
+  background-color: rgb(241, 234, 234);
+  font-size: large;
+  color: black;
+}
+.gjs-block-label {
+  font-size: smaller;
+  color: black;
 }
