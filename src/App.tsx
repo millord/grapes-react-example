@@ -9,7 +9,7 @@ import gjsBasicBlocks from 'grapesjs-blocks-basic';
 
 // import sanityClient  from "./client"
 import axios from 'axios'
-import {Button} from "@material-ui/core"
+import {Button, Typography} from "@material-ui/core"
 
 
 // const sanityClient = require("@sanity/client")
@@ -141,6 +141,9 @@ const App: React.FC = () => {
     return (
         <>
             <div id="example-editor"/>
+            <Typography style={{margin: 5}} className="siteTitle" variant="h4" component="h2">
+           Create Your Site
+           </Typography>
             {/* <TemplateDisplay jsxString={htmlString} cssString={cssString} /> */}
 
 
