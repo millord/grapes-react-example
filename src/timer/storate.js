@@ -39,10 +39,10 @@ export default {
   headers: {},
 
   // Endpoint where to save all stuff
-  urlStore: '',
+  urlStore: 'http://localhost:8000/template/${123}',
 
   // Endpoint where to fetch data
-  urlLoad: '',
+  urlLoad: 'http://localhost:8000/template/123',
 
   //Callback before request
   beforeSend(jqXHR, settings) {},
