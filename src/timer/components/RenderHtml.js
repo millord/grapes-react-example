@@ -3,17 +3,14 @@ import "../../styles.css"
 // import "./container.css"
 // import Container from "./Container"
 
+import { renderToStaticMarkup } from 'react-dom/server'
+import PropTypes from 'prop-types';
 
 
- export default function RenderHtml() {
-   const [title, setTitle] = useState("My Site Title")
- 
-  function handleSubmit(e){
-    e.preventDefault()
-    setTitle(title)
-  }
 
-   return(
+
+  export default function RenderHtml({title, setTitle, handleSubmit}) {
+   return (
    <>
    {/* <Container> */}
    <title>W3.CSS Template
@@ -331,9 +328,9 @@ import "../../styles.css"
   </p>
 </footer>
 {/* </Container> */}
+
    </>
   )
   
 }
-
 
