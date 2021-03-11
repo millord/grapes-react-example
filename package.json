@@ -12,6 +12,7 @@
     "@types/react-dom": "16.9.1",
     "axios": "^0.21.1",
     "beautiful-dom": "^1.0.7",
+    "component-css-extractor": "^1.0.0",
     "grapesjs": "0.15.8",
     "grapesjs-blocks-basic": "^0.1.8",
     "grapesjs-preset-webpage": "^0.1.10",
