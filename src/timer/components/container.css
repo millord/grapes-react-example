@@ -1,0 +1,10 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 500px;
+  width: 600px;
+  margin-left: 0 auto;
+  margin-right: 0 auto;
+}

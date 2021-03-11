@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-import { renderToStaticMarkup } from 'react-dom/server'
-import extractCSS from 'component-css-extractor'
 import "../../styles.css"
+// import "./container.css"
+// import Container from "./Container"
 
 
 
@@ -15,6 +15,7 @@ import "../../styles.css"
 
    return(
    <>
+   {/* <Container> */}
    <title>W3.CSS Template
    </title>
    <meta charSet="UTF-8"/>
@@ -327,7 +328,7 @@ import "../../styles.css"
     <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>
   </p>
 </footer>
-
+{/* </Container> */}
    </>
   )
   
