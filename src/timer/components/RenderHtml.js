@@ -89,7 +89,9 @@ import "../../styles.css"
     </div>
   </div>
   <form onSubmit={handleSubmit}>
-     <input value={title} type="text" onChange={(e) =>  setTitle(e.target.value )}/>
+    <label>Header Title</label>
+    <br/>
+     <input  value={title} type="text" onChange={(e) =>  setTitle(e.target.value )}/>
      <button type="submit">Apply</button>
      </form>
   <div id="irbo6v">
