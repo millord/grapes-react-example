@@ -65,7 +65,7 @@ const App: React.FC = () => {
 
   return (
     <>
-      {boilerPlate ? <RenderHtml setBoilerPlate={setBoilerPlate}/> :  (<><button >Style component</button><div id="example-editor" /></>)
+      {boilerPlate ? <RenderHtml setBoilerPlate={setBoilerPlate}/> :  (<><div id="example-editor" /><HorizontalLabelPositionBelowStepper/></>)
       
       }
     </>
